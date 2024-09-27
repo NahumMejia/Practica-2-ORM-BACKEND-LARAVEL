@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Models\Level;
+
 
 Route::get('/', function () {
     $users = User::get();
@@ -12,8 +14,34 @@ Route::get('/', function () {
 Route::get('/profile/{id}', function($id) {
     $user = User::find($id);
 
+    $posts = $user->posts()->with('category','image','tags')
+    ->withCount('comments')->get();
+
+    $videos = $user->videos()->with('category','image','tags')
+    ->withCount('comments')->get();
+
     return view('profile',[
-        'user'=> $user
+        'user'=> $user,
+        'posts'=>$posts,
+        'videos'=>$videos
     ]);
 
 })->name('profile');
+
+
+
+Route::get('/level/{id}', function($id) {
+    $level = Level::find($id);
+
+    $posts = $level->posts()->with('category', 'image', 'tags')
+        ->withCount('comments')->get();
+
+    $videos = $level->videos()->with('category', 'image', 'tags')
+        ->withCount('comments')->get();
+
+    return view('level', [
+        'level' => $level,
+        'posts' => $posts,
+        'videos' => $videos
+    ]);
+})->name('level');

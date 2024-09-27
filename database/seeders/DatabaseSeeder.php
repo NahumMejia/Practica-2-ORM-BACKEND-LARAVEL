@@ -2,6 +2,17 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Seeder; // Importar la clase Seeder
+use App\Models\Group;
+use App\Models\Level;
+use App\Models\User;
+use App\Models\Profile;
+use App\Models\Location;
+use App\Models\Image;
+use App\Models\Category;
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\Video;
 
 class DatabaseSeeder extends Seeder
 {
