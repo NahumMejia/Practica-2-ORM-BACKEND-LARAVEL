@@ -4,7 +4,6 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Usuarios de {{ $level->name }}</title>
-
         @vite("resources/css/app.css")
     </head>
     <body class="font-sans">
@@ -27,7 +26,7 @@
                                 <div class="md:w-1/3">
                                     <img
                                         class="h-auto w-full object-cover md:h-full"
-                                        src="https://media.vogue.mx/photos/64e15be96e16315ea8208e2c/3:4/w_2560%2Cc_limit/taylor-swift-cantante.jpg"
+                                        src="{{ $post->image->url }}"
                                         alt="{{ $post->name }}"
                                     />
                                 </div>
